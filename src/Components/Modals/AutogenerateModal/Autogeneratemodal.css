@@ -13,13 +13,14 @@
 .autogeneratemodal-content {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .autogeneratemodal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   left: 0;
+  top: 0;
   z-index: 9999; /* Sit on top */
   width: 100%; /* Full width */
   height: 100%; /* Full height */
@@ -28,11 +29,12 @@
   background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 .autogeneratemodal-inner-content {
-  background: white;
+  background: black;
+  margin-top: 30%;
   padding: 3rem;
   border-radius: 10px 10px 0 0;
   width: 100%;
-  height: 604px;
+  height: auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -41,4 +43,30 @@
   border-radius: 8px;
   z-index: 3;
   position: relative;
+}
+.functionNameDiv {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2%;
+
+  height: auto;
+  width: 100%;
+  background-color: black;
+}
+.inputLabel {
+  display: flex;
+  align-items: flex-start;
+  color: white;
+  width: 250px;
+  font-family: sans-serif;
+}
+.autogenerateInput {
+  height: 30px;
+  width: 200px;
+  padding-left: 2%;
+  padding-right: 2%;
+  font-size: large;
+  outline: none;
+  border: none;
 }

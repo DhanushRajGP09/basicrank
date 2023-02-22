@@ -9,9 +9,7 @@ import Editorial from "../../Components/Editorial/Editorial";
 export default function Home() {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    localStorage.setItem("Languages", JSON.stringify([]));
-  }, []);
+  localStorage.setItem("Languages", JSON.stringify([]));
 
   return (
     <div className="Home">
@@ -52,7 +50,7 @@ export default function Home() {
         </div>
       </div>
       <Routes>
-        <Route path="/Languages" element={<LanguageSelection />}></Route>
+        <Route path="/Languages/*" element={<LanguageSelection />}></Route>
         <Route path="/" element={<Description />}></Route>
         <Route path="/Solution" element={<Solutions />}></Route>
         <Route path="/Editorial" element={<Editorial />}></Route>

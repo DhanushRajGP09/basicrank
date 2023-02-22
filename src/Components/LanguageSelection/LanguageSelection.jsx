@@ -9,33 +9,96 @@ import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import CircleIcon from "@mui/icons-material/Circle";
 import Autogeneratemodal from "../Modals/AutogenerateModal/Autogeneratemodal";
-export default function LanguageSelection() {
-  const Languages = JSON.parse(localStorage.getItem("Languages"));
+import Editor from "@monaco-editor/react";
 
-  var newArr = [];
-  console.log("ss..", newArr);
+import Axios from "axios";
+
+import {
+  addLanguage,
+  getLanguages,
+  removeFromLanguage,
+} from "../../features/Language/LanguageSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
+export default function LanguageSelection() {
+  const Languages = useSelector(getLanguages);
+  console.log("lan", Languages);
+
+  const dispatch = useDispatch();
 
   const handleLanguageClick = (label) => {
-    if (!newArr.includes(label)) {
-      newArr.push(label);
-      console.log(newArr);
+    if (!Languages.includes(label)) {
+      dispatch(addLanguage(label));
     } else {
-      newArr = newArr.filter((data) => data !== label);
-      localStorage.setItem("Languages", JSON.stringify(newArr));
-      console.log(newArr);
+      dispatch(removeFromLanguage(label));
     }
   };
 
   const autoGenerate = () => {
-    localStorage.setItem("Languages", JSON.stringify(newArr));
+    localStorage.setItem("Languages", JSON.stringify(Languages));
   };
 
+  const selectedLanguages = JSON.parse(localStorage.getItem("Languages"));
+
+  const [userCode, setUserCode] = useState(``);
+
+  // State variable to set editors default language
+  const [userLang, setUserLang] = useState("python");
+  const [userInput, setUserInput] = useState("");
+  const [userOutput, setUserOutput] = useState("");
   const [modal, setModal] = useState(false);
+  const [userTheme, setUserTheme] = useState("vs-dark");
+
+  const [loading, setLoading] = useState(false);
+
+  function clearOutput() {
+    setUserOutput("");
+  }
+  function compile() {
+    setLoading(true);
+    if (userCode === ``) {
+      return;
+    }
+
+    // Post request to compile endpoint
+    Axios.post(`http://localhost:8000/compile`, {
+      code: userCode,
+      language: userLang,
+      input: userInput,
+    })
+      .then((res) => {
+        setUserOutput(res.data.output);
+      })
+      .then(() => {
+        setLoading(false);
+      });
+  }
+
+  const skeletonCodes = {
+    Python: `def functionName: 
+    
+    `,
+    Java: `public static void main(String args[]){ 
+
+
+    }`,
+  };
+
+  const [skeletoncode, setSkeletonCode] = useState("");
+
+  const handleCodeSnippet = (name) => {
+    if (Object.hasOwn(skeletonCodes, name)) {
+      console.log("calling", name);
+      console.log(".............", skeletonCodes[name]);
+      setSkeletonCode(skeletonCodes[name]);
+    }
+  };
 
   return (
     <div className="Languages">
       <Autogeneratemodal modal={modal} setModal={setModal} />
       <div className="languagesContainer">
+        <h3 style={{ color: "white" }}>Allowed Languages</h3>
         <div className="languageLabel">
           <FormGroup>
             <FormControlLabel
@@ -160,6 +223,42 @@ export default function LanguageSelection() {
         >
           Auto Generate
         </button>
+      </div>
+      <div className="codeSnippetContainer">
+        <div className="codeSnippetTabbar"></div>
+        <div className="codeSnippetInsideContainer">
+          <div className="selectedLanguagesContainer">
+            {selectedLanguages.length >= 1
+              ? selectedLanguages.map((data, index) => {
+                  return (
+                    <div
+                      className="selectedLanguage"
+                      onClick={() => {
+                        handleCodeSnippet(data);
+                      }}
+                    >
+                      {data}
+                    </div>
+                  );
+                })
+              : ""}
+          </div>
+          <div className="compileContainer">
+            <div className="left-container">
+              <Editor
+                height="100%"
+                width="100%"
+                theme={userTheme}
+                language={userLang}
+                defaultLanguage="python"
+                value={skeletoncode}
+                onChange={(value) => {
+                  setSkeletonCode(value);
+                }}
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

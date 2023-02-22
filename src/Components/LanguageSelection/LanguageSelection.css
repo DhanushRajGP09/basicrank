@@ -1,23 +1,23 @@
 .Languages {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  margin-left: 1%;
+  background-color: #edeff2;
+
+  width: 100%;
 }
 .languagesContainer {
-  margin-top: 5%;
-  margin-bottom: 5%;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: flex-start;
-  padding-left: 20%;
-  padding-right: 20%;
+  padding-left: 2%;
+  padding-right: 2%;
   gap: 6%;
   height: 500px;
-  width: 100%;
+  width: 250px;
   background-color: black;
 }
 .languageLabel {
@@ -86,4 +86,157 @@
 
 .button-4:-webkit-details-marker {
   display: none;
+}
+
+.codeSnippetContainer {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 70%;
+  height: 70vh;
+  background-color: black;
+  margin-right: 3%;
+  margin-top: 5%;
+}
+
+.codeSnippetTabbar {
+  width: 100%;
+  height: 5%;
+  background-color: black;
+}
+.codeSnippetInsideContainer {
+  width: 100%;
+  height: 95%;
+  background-color: cadetblue;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.selectedLanguagesContainer {
+  height: 100%;
+  width: 15%;
+  background-color: lightgray;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+.selectedLanguage {
+  width: 100%;
+  margin-top: 1%;
+  height: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  cursor: pointer;
+  text-decoration: none;
+}
+.selectedLanguage:hover {
+  background-color: black;
+  color: white;
+}
+.compileContainer {
+  height: 100%;
+  width: 85%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+.left-container {
+  position: relative;
+  flex: 60%;
+  width: 100%;
+  height: 100%;
+}
+.right-container {
+  flex: 40%;
+  height: calc(100vh - 50px);
+  display: flex;
+  flex-direction: column;
+  background-color: #242424;
+  border-left: 3px solid #1f65e6;
+  padding: 5px;
+}
+.input-box {
+  flex: 50%;
+}
+.input-box textarea {
+  font-size: 16px;
+}
+.spinner-box {
+  flex: 50%;
+  background-color: #242424;
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.spinner-box img {
+  width: 200px;
+}
+.output-box {
+  flex: 50%;
+  background-color: #242424;
+  overflow-y: auto;
+  color: white;
+  position: relative;
+}
+.clear-btn {
+  position: absolute;
+  bottom: 14px;
+  right: 18px;
+  width: 80px;
+  height: 40px;
+  font-size: 22px;
+  font-weight: bold;
+  color: white;
+  background-color: #1f65e6;
+  border: none;
+  border-radius: 4px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.output-box pre {
+  font-size: 15px;
+  white-space: pre-wrap;
+}
+h4 {
+  color: #afec3f;
+}
+#code-inp {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  resize: none;
+  background-color: #242424;
+  color: whitesmoke;
+  padding: 5px;
+}
+#code-inp:focus {
+  outline: none;
+}
+.run-btn {
+  position: absolute;
+  bottom: 10px;
+  right: 18px;
+  width: 80px;
+  height: 40px;
+  font-size: 22px;
+  font-weight: bold;
+  background-color: #afec3f;
+  border: none;
+  border-radius: 4px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.run-btn:active {
+  background-color: #6e9427;
+}
+.main {
+  display: flex;
+  height: auto;
 }
