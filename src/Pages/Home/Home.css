@@ -1,0 +1,35 @@
+.Home {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background-color: #454545;
+}
+
+.questionTabbar {
+  display: flex;
+  align-items: center;
+  background-color: black;
+  flex-wrap: wrap;
+  height: auto;
+  width: 100%;
+}
+.questionTabbarInside {
+  display: flex;
+  margin-left: 1%;
+  flex-wrap: wrap;
+  height: auto;
+  width: 40%;
+  align-items: center;
+  justify-content: space-between;
+}
+.questionTabbarOption {
+  color: white;
+  cursor: pointer;
+}
+
+.questionTabbarOption:hover {
+  color: lightblue;
+}
