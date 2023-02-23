@@ -11,6 +11,8 @@ import CircleIcon from "@mui/icons-material/Circle";
 import Autogeneratemodal from "../Modals/AutogenerateModal/Autogeneratemodal";
 import Editor from "@monaco-editor/react";
 import fullscreenicon from "../../Assets/Icons/icons8-fullscreen-32.png";
+import previous from "../../Assets/Icons/leftarrow.png";
+import forward from "../../Assets/Icons/rightarrow.png";
 
 import Axios from "axios";
 
@@ -28,7 +30,7 @@ export default function LanguageSelection() {
   const dispatch = useDispatch();
 
   const handleLanguageClick = (label) => {
-    if (!Languages.includes(label)) {
+    if (!Languages?.includes(label)) {
       dispatch(addLanguage(label));
     } else {
       dispatch(removeFromLanguage(label));
@@ -225,7 +227,7 @@ export default function LanguageSelection() {
         </div>
         <div className="codeSnippetInsideContainer">
           <div className="selectedLanguagesContainer">
-            {selectedLanguages.length >= 1
+            {selectedLanguages?.length >= 1
               ? selectedLanguages.map((data, index) => {
                   return (
                     <div

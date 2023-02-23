@@ -2,7 +2,6 @@
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  flex-wrap: wrap;
   background-color: #edeff2;
   width: 100%;
 }
@@ -15,8 +14,10 @@
   padding-left: 2%;
   padding-right: 2%;
   gap: 6%;
+  margin-top: 1%;
   height: 500px;
   width: 250px;
+  margin-right: 2%;
   background-color: rgb(70, 130, 180);
 }
 .languageLabel {
@@ -92,11 +93,10 @@
   align-items: flex-start;
   flex-direction: column;
   justify-content: space-between;
-  width: 70%;
-  height: 70vh;
+  width: 800px;
+  height: 50vh;
   background-color: black;
   margin-right: 3%;
-  margin-top: 5%;
 }
 
 .codeSnippetTabbar {
@@ -258,4 +258,41 @@ h4 {
 .main {
   display: flex;
   height: auto;
+}
+.prevNextButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 50%;
+  width: 300px;
+  margin-top: 1%;
+  height: 50px;
+  margin-bottom: 2%;
+}
+.previousButton {
+  display: flex;
+  cursor: pointer;
+  border: 2px solid rgb(70, 130, 180);
+  padding: 10px;
+  border-radius: 25px;
+  align-items: center;
+  justify-content: space-evenly;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding: 3%;
+  height: 100%;
+  width: 40%;
+  background-color: rgb(70, 130, 180);
+  gap: 5%;
+  font-family: "Roboto Mono", sans-serif;
+  color: white;
+  font-size: large;
+}
+.previousButton:hover {
+  background-color: rgb(34, 139, 34);
+  border: 2px solid rgb(34, 139, 34);
+}
+
+.previousIcon {
+  width: 22px;
+  height: 22px;
 }

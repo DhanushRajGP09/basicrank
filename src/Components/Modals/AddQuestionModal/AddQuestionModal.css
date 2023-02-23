@@ -1,0 +1,47 @@
+.addQuestionoverlay {
+  position: absolute;
+  top: 0rem;
+  left: 0rem;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  width: auto;
+  /* align-items: center; */
+  justify-content: flex-end;
+  z-index: 2;
+}
+.addQuestionmodal-content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.addQuestionmodal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  left: 0;
+  top: 0;
+  z-index: 9999; /* Sit on top */
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+.addQuestionmodal-inner-content {
+  background-color: #edeff2;
+  margin-top: 15%;
+  border-radius: 10px 10px 10px 10px;
+  width: 120vh;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  margin-right: 2%;
+
+  z-index: 3;
+  position: relative;
+}
