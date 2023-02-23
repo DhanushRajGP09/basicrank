@@ -2,13 +2,14 @@ import logo from "./logo.svg";
 import "./App.css";
 import Home from "./Pages/Home/Home";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import HomePage from "./Pages/Home/HomePage/HomePage";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/*" element={<Home />} />
+          <Route path="/*" element={<HomePage />} />
         </Routes>
       </BrowserRouter>
     </div>

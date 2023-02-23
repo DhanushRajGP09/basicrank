@@ -1,0 +1,44 @@
+.navBody{
+    width: 100%;
+    min-height: 20%;
+    background-color: #233752;
+    display: flex;
+    padding: 0.5% 3% 0.5% 3%;
+    justify-content: space-around;
+    /* padding-bottom: 0.5%;
+    padding-left: 3%;
+    padding-right: 3%; */
+}
+.robo-logo{
+    height:40px;
+    /* padding: 0.5% 0% 0.5% 0%; */
+    margin-top: 5px;
+}
+.nav-bar-font{
+    color: white;
+    font-family: "Mulish";
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 0.23px;
+    line-height: 20px;
+    /* margin-left: 40px; */
+    text-transform: capitalize;
+}
+.navbar-btn-div{
+    /* margin-left: 5%; */
+    
+    display: flex;
+    width: 30%;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav-bar-logout{
+    display: flex;
+}
+.active{
+    border-bottom: 1px solid white;
+    
+}
+.nav-bar-button{
+    /* width: 5%; */
+}
