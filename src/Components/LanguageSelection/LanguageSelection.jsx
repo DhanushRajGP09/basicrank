@@ -10,6 +10,7 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import CircleIcon from "@mui/icons-material/Circle";
 import Autogeneratemodal from "../Modals/AutogenerateModal/Autogeneratemodal";
 import Editor from "@monaco-editor/react";
+import fullscreenicon from "../../Assets/Icons/icons8-fullscreen-32.png";
 
 import Axios from "axios";
 
@@ -38,18 +39,22 @@ export default function LanguageSelection() {
     localStorage.setItem("Languages", JSON.stringify(Languages));
   };
 
-  const selectedLanguages = JSON.parse(localStorage.getItem("Languages"));
+  const selectedLanguages = Languages;
 
   const [userCode, setUserCode] = useState(``);
 
   // State variable to set editors default language
-  const [userLang, setUserLang] = useState("python");
+  const [userLang, setUserLang] = useState("java");
   const [userInput, setUserInput] = useState("");
   const [userOutput, setUserOutput] = useState("");
   const [modal, setModal] = useState(false);
   const [userTheme, setUserTheme] = useState("vs-dark");
-
+  const [fontSize, setFontSize] = useState(20);
   const [loading, setLoading] = useState(false);
+
+  const options = {
+    fontSize: fontSize,
+  };
 
   function clearOutput() {
     setUserOutput("");
@@ -91,6 +96,7 @@ export default function LanguageSelection() {
       console.log("calling", name);
       console.log(".............", skeletonCodes[name]);
       setSkeletonCode(skeletonCodes[name]);
+      setUserLang(name.toLowerCase());
     }
   };
 
@@ -118,25 +124,7 @@ export default function LanguageSelection() {
             />
           </FormGroup>
         </div>
-        <div className="languageLabel">
-          <FormGroup>
-            <FormControlLabel
-              control={
-                <Checkbox
-                  label="CheckCircleIcon"
-                  icon={<RadioButtonUncheckedIcon />}
-                  checkedIcon={<CheckCircleIcon />}
-                  style={{ color: "white" }}
-                  onClick={() => {
-                    handleLanguageClick("Typescript");
-                  }}
-                />
-              }
-              label="Typescript"
-              style={{ color: "white" }}
-            />
-          </FormGroup>
-        </div>
+
         <div className="languageLabel">
           <FormGroup>
             <FormControlLabel
@@ -213,19 +201,28 @@ export default function LanguageSelection() {
             />
           </FormGroup>
         </div>
-        <button
-          class="button-4"
-          role="button"
-          onClick={() => {
-            autoGenerate();
-            setModal(true);
-          }}
-        >
-          Auto Generate
-        </button>
       </div>
-      <div className="codeSnippetContainer">
-        <div className="codeSnippetTabbar"></div>
+      <div className="codeSnippetContainer" id="codeCompiler">
+        <div className="codeSnippetTabbar">
+          <div
+            className="codeSnippetTabbarControls"
+            onClick={() => {
+              var elem = document.getElementById("codeCompiler");
+              if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+              } else if (elem.webkitRequestFullscreen) {
+                /* Safari */
+                elem.webkitRequestFullscreen();
+              } else if (elem.msRequestFullscreen) {
+                /* IE11 */
+                elem.msRequestFullscreen();
+              }
+            }}
+          >
+            <span style={{ cursor: "pointer" }}>Fullscreen</span>
+            <img src={fullscreenicon} className="fullscreenIcon"></img>
+          </div>
+        </div>
         <div className="codeSnippetInsideContainer">
           <div className="selectedLanguagesContainer">
             {selectedLanguages.length >= 1
@@ -246,11 +243,12 @@ export default function LanguageSelection() {
           <div className="compileContainer">
             <div className="left-container">
               <Editor
+                options={options}
                 height="100%"
                 width="100%"
                 theme={userTheme}
                 language={userLang}
-                defaultLanguage="python"
+                defaultLanguage={userLang}
                 value={skeletoncode}
                 onChange={(value) => {
                   setSkeletonCode(value);

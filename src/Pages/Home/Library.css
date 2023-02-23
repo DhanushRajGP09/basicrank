@@ -11,14 +11,16 @@
 .questionTabbar {
   display: flex;
   align-items: center;
-  background-color: black;
+  background-color: #ff6611;
   flex-wrap: wrap;
+
   height: auto;
   width: 100%;
 }
 .questionTabbarInside {
   display: flex;
   margin-left: 5%;
+  font-family: "Roboto Mono", sans-serif;
   flex-wrap: wrap;
   height: auto;
   width: 30%;

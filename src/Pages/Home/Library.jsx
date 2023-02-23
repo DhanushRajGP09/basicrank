@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
-import "./Home.css";
+import "./Library.css";
 import { Route, Routes, useNavigate } from "react-router";
 import LanguageSelection from "../../Components/LanguageSelection/LanguageSelection";
 import Description from "../../Components/Description/Description";
 import Solutions from "../../Components/Solutions/Solutions";
 import Editorial from "../../Components/Editorial/Editorial";
 
-export default function Home() {
+export default function Library() {
   const navigate = useNavigate();
 
   localStorage.setItem("Languages", JSON.stringify([]));
@@ -18,7 +18,7 @@ export default function Home() {
           <h3
             className="questionTabbarOption"
             onClick={() => {
-              navigate("/");
+              navigate("/Library");
             }}
           >
             Description
@@ -26,7 +26,7 @@ export default function Home() {
           <h3
             className="questionTabbarOption"
             onClick={() => {
-              navigate("Solution");
+              navigate("/Library/Solution");
             }}
           >
             Solutions&testcases
@@ -34,7 +34,7 @@ export default function Home() {
           <h3
             className="questionTabbarOption"
             onClick={() => {
-              navigate("Languages");
+              navigate("/Library/Languages");
             }}
           >
             Languages
@@ -42,7 +42,7 @@ export default function Home() {
           <h3
             className="questionTabbarOption"
             onClick={() => {
-              navigate("Editorial");
+              navigate("/Library/Editorial");
             }}
           >
             Editorial
@@ -50,10 +50,13 @@ export default function Home() {
         </div>
       </div>
       <Routes>
-        <Route path="/Languages/*" element={<LanguageSelection />}></Route>
         <Route path="/" element={<Description />}></Route>
-        <Route path="/Solution" element={<Solutions />}></Route>
-        <Route path="/Editorial" element={<Editorial />}></Route>
+        <Route
+          path="/Library/Languages/*"
+          element={<LanguageSelection />}
+        ></Route>
+        <Route path="/Library/Solution" element={<Solutions />}></Route>
+        <Route path="/Library/Editorial" element={<Editorial />}></Route>
       </Routes>
     </div>
   );
