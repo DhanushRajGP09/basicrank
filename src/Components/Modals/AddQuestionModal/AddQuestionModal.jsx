@@ -7,6 +7,7 @@ import Solutions from "../../Solutions/Solutions";
 import Editorial from "../../Editorial/Editorial";
 import previous from "../../../Assets/Icons/leftarrow.png";
 import forward from "../../../Assets/Icons/rightarrow.png";
+import closemodal from "../../../Assets/Icons/close.png";
 
 export default function AddQuestionModal(props) {
   const navigate = useNavigate();
@@ -18,6 +19,13 @@ export default function AddQuestionModal(props) {
       >
         <div className="addQuestionoverlay">
           <div className="addQuestionmodal-content">
+            <img
+              src={closemodal}
+              className="closeModal"
+              onClick={() => {
+                props.setModal(false);
+              }}
+            ></img>
             <div className="addQuestionmodal-inner-content">
               <div className="questionTabbar">
                 <div className="questionTabbarInside">
