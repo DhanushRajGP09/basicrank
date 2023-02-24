@@ -1,6 +1,6 @@
 .Home {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   flex-wrap: wrap;
   height: 100%;
@@ -41,8 +41,9 @@
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
+  margin-top: 2%;
   width: 18%;
-  height: 90vh;
+  height: auto;
   background-color: white;
   margin-left: 2%;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -52,8 +53,8 @@
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
-  width: 80%;
-  height: 100vh;
+  width: 78%;
+  height: auto;
   background-color: #edeff2;
 }
 .libraryLeftContainerHeaderDiv {
@@ -131,7 +132,7 @@
   font-size: 21px;
   color: white;
   background-color: rgb(70, 130, 180);
-  border: 2px solid;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
   cursor: pointer;
   border-radius: 25px;
   padding-left: 1%;
@@ -140,13 +141,82 @@
   width: 40px;
   height: 40px;
 }
-.questionsDiv {
+.questionsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 90%;
+  min-height: 85%;
+  margin-top: 2%;
+
+  margin-bottom: 2%;
+}
+.questionContainer {
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
-  width: 90%;
-  height: 85%;
+  width: 49%;
   background-color: white;
-  margin-bottom: 2%;
+  margin-top: 2%;
+  padding: 1%;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  height: 30vh;
+}
+.questionCategory {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  color: rgb(129, 133, 137);
+  height: 10%;
+  font-size: 20px;
+  width: 100%;
+}
+.questionNameAndDescDiv {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: column;
+
+  height: 70%;
+  font-size: 20px;
+  margin-top: 2%;
+  width: 100%;
+}
+.questionLevelDiv {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 10%;
+  font-size: 18px;
+  margin-top: 2%;
+  width: 100%;
+}
+
+.questionNameDiv {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+
+  justify-content: space-between;
+  height: 35%;
+}
+.questionDescDiv {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  justify-content: flex-start;
+  height: 60%;
+}
+.questionLevel {
+  width: 25%;
+}
+.questionMaxScore {
+  width: 20%;
+}
+.questionTime {
+  width: 40%;
 }
