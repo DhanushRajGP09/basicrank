@@ -103,8 +103,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  width: 90%;
+  border-radius: 25px;
+  background-color: white;
+  width: 91%;
+  padding-left: 1%;
   height: 5vh;
   margin-top: 2%;
 }

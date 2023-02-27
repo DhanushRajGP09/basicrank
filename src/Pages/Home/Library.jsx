@@ -116,18 +116,6 @@ export default function Library() {
               <span className="questionTime">Recommended time: 20Mins</span>
             </div>
           </div>
-          <div className="questionContainer">
-            <div className="questionCategory">category</div>
-            <div className="questionNameAndDescDiv">
-              <div className="questionNameDiv">Question Name</div>
-              <div className="questionDescDiv">Description</div>
-            </div>
-            <div className="questionLevelDiv">
-              <span className="questionLevel">Difficulty</span>
-              <span className="questionMaxScore">Max score:20</span>
-              <span className="questionTime">Recommended time: 20Mins</span>
-            </div>
-          </div>
         </div>
       </div>
     </div>

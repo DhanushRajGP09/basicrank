@@ -7,6 +7,7 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import Home from "../../Pages/Home/Library";
 import { NavLink } from "react-router-dom";
 import Library from "../../Pages/Home/Library";
+import Assesments from "../../Pages/Assesments/Assesments";
 const Navbar = () => {
   return (
     <>
@@ -18,9 +19,9 @@ const Navbar = () => {
           <div className="nav-bar-button">
             <p className="nav-bar-font">DashBoard</p>
           </div>
-          <div className="nav-bar-button">
+          <NavLink className="nav-bar-button" to="/Assesments">
             <p className="nav-bar-font">Assessments</p>
-          </div>
+          </NavLink>
           <div className="nav-bar-button">
             <p className="nav-bar-font">Candidates</p>
           </div>
@@ -43,6 +44,7 @@ const Navbar = () => {
 
       <Routes>
         <Route path="/Library/*" element={<Library />}></Route>
+        <Route path="/Assesments/*" element={<Assesments />}></Route>
       </Routes>
     </>
   );
