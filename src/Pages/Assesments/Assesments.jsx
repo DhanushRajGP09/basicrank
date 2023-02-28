@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Assesments.css";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
@@ -7,16 +7,18 @@ import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import addIcon from "../../Assets/Icons/icons8-add-67 (1).png";
 import testIcon from "../../Assets/Icons/icons8-test-64.png";
+import Createtest from "../../Components/Modals/CreatetestModal/Createtest";
 
 export default function Assesments() {
   const [value, setValue] = React.useState("alltests");
-
+  const [modal, setModal] = useState(false);
   const handleChange = (event) => {
     setValue(event.target.value);
   };
   const test = "";
   return (
     <div className="assesments">
+      <Createtest modal={modal} setModal={setModal} />
       <div className="assesmentsLeftContainer">
         <div className="assesmentsLeftContainerCandidatesDiv">
           <span className="librariesText">Assesments</span>
@@ -46,12 +48,17 @@ export default function Assesments() {
       </div>
       <div className="assesmentsRightContainer">
         <div className="assesmentsRightHeader">
-          <span className="librariesText">Tests</span>
+          <span className="librariesText">All Tests</span>
           <input
             placeholder="Search added Test"
             className="librariesQuestionSearchbar"
           ></input>
-          <div className="addQuestionDiv">
+          <div
+            className="addQuestionDiv"
+            onClick={() => {
+              setModal(true);
+            }}
+          >
             Create Test
             <img src={testIcon} className="addIcon"></img>
           </div>
