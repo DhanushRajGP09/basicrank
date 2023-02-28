@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import "./Createtest.css";
 import { Route, Routes, useNavigate } from "react-router";
 import DatePicker from "react-datepicker";
@@ -9,9 +9,17 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
+import axios from "axios";
+import useFileUpload from "react-use-file-upload";
 
 import FormGroup from "@mui/material/FormGroup";
 import Checkbox from "@mui/material/Checkbox";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addCandidates,
+  getCandidates,
+  removeFromCandidates,
+} from "../../../features/Test/TestSlice";
 
 export default function Createtest(props) {
   const navigate = useNavigate();
@@ -21,6 +29,43 @@ export default function Createtest(props) {
   const handleChange = (event) => {
     setValue(event.target.value);
   };
+
+  const [candidateEmail, setCandidateEmail] = useState("");
+
+  const getaddedcandidates = useSelector(getCandidates);
+  console.log("sadad", getaddedcandidates);
+
+  const dispatch = useDispatch();
+
+  const {
+    files,
+    fileNames,
+    fileTypes,
+    totalSize,
+    totalSizeInBytes,
+    handleDragDropEvent,
+    clearAllFiles,
+    createFormData,
+    setFiles,
+    removeFile,
+  } = useFileUpload();
+
+  const inputRef = useRef();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const formData = createFormData();
+
+    try {
+      axios.post("https://some-api.com", formData, {
+        "content-type": "multipart/form-data",
+      });
+    } catch (error) {
+      console.error("Failed to submit files.");
+    }
+  };
+
   return (
     <div>
       <div
@@ -185,11 +230,110 @@ export default function Createtest(props) {
                     <input
                       placeholder="Email of the candidate"
                       className="createTestCollegeNameInput"
+                      value={candidateEmail}
+                      onChange={(e) => {
+                        setCandidateEmail(e.target.value);
+                      }}
                     ></input>
-                    <button className="addCandidateButton">Add </button>
+                    <button
+                      className="addCandidateButton"
+                      onClick={() => {
+                        dispatch(addCandidates(candidateEmail));
+                      }}
+                    >
+                      Add{" "}
+                    </button>
                   </div>
                 </div>
-                <div className="selectedQuestionsContainer"></div>
+                <div className="selectedCandidatesContainer">
+                  {getaddedcandidates.length > 0
+                    ? getaddedcandidates.map((data) => {
+                        return (
+                          <div className="selectedCandidateContainer">
+                            {data}
+                            <span
+                              className="deleteCandidate"
+                              onClick={() => {
+                                dispatch(removeFromCandidates(data));
+                              }}
+                            >
+                              delete
+                            </span>
+                          </div>
+                        );
+                      })
+                    : "candidates email will be displayed here..."}
+                </div>
+                <span className="or">OR</span>
+                <div className="uploadCandidateFileDiv">
+                  <div className="uploadCandidateInnerDiv">
+                    <h2>Import Candidates File</h2>
+
+                    <div className="form-container">
+                      {/* Display the files to be uploaded */}
+
+                      {/* Provide a drop zone and an alternative button inside it to upload files. */}
+                      <div
+                        onDragEnter={handleDragDropEvent}
+                        onDragOver={handleDragDropEvent}
+                        onDrop={(e) => {
+                          handleDragDropEvent(e);
+                          setFiles(e, "a");
+                        }}
+                      >
+                        <button
+                          onClick={() => inputRef.current.click()}
+                          className="fileuploadButton"
+                        >
+                          Select a file to upload
+                        </button>
+
+                        {/* Hide the crappy looking default HTML input */}
+                        <input
+                          ref={inputRef}
+                          type="file"
+                          multiple
+                          style={{ display: "none" }}
+                          onChange={(e) => {
+                            setFiles(e, "a");
+                            inputRef.current.value = null;
+                          }}
+                        />
+                      </div>
+                      <div>
+                        <ul>
+                          {fileNames.map((name) => (
+                            <li key={name}>
+                              <span>{name}</span>
+
+                              <span onClick={() => removeFile(name)}>
+                                <i className="fa fa-times" />
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
+
+                        {files.length > 0 && (
+                          <ul>
+                            <li>File types found: {fileTypes.join(", ")}</li>
+                            <li>Total Size: {totalSize}</li>
+                            <li>Total Bytes: {totalSizeInBytes}</li>
+
+                            <li className="clear-all">
+                              <button
+                                onClick={() => clearAllFiles()}
+                                className="clearAllButton"
+                              >
+                                Clear All
+                              </button>
+                            </li>
+                          </ul>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <button className="createTestButton">Create Test</button>
               </div>
             </div>
           </div>

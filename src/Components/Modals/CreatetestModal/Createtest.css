@@ -31,10 +31,10 @@
 }
 .createTestmodal-inner-content {
   background-color: #edeff2;
-  margin-top: 7%;
+  margin-top: 5%;
   border-radius: 10px 10px 10px 10px;
   width: 150vh;
-  height: 85vh;
+  height: 89vh;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -53,7 +53,7 @@
   position: absolute;
   height: 35px;
   z-index: 4;
-  margin-top: 4.5%;
+  margin-top: 3%;
   cursor: pointer;
 }
 .typeofTestModalDiv {
@@ -66,7 +66,7 @@
   height: auto;
 }
 .testNameChoice {
-  background-color: rgba(83, 83, 83, 0.814);
+  background-color: rgb(0, 150, 255);
   width: 350px;
   height: 40px;
   font-size: 20px;
@@ -182,6 +182,8 @@
   width: 100%;
   height: 250px;
   background-color: white;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   overflow-y: scroll;
 }
 .createTestmodalRightContainer {
@@ -189,9 +191,8 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 3%;
-  width: 50%;
+  width: 48%;
   height: 100%;
-  background-color: lightblue;
 }
 .selectCandidatesDiv {
   display: flex;
@@ -223,4 +224,87 @@
 .addCandidateButton:active {
   box-shadow: 0 1px #666;
   transform: translateY(2px);
+}
+.selectedCandidateContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1%;
+  font-size: 20px;
+  width: 100%;
+  height: 30px;
+
+  margin-top: 1%;
+}
+.selectedCandidateContainer:hover {
+  background-color: rgb(0, 150, 255);
+  color: white;
+}
+
+.selectedCandidatesContainer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 80%;
+  height: 250px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  background-color: white;
+  flex-direction: column;
+  overflow-y: scroll;
+}
+.deleteCandidate {
+  font-size: 17px;
+  color: darkred;
+  cursor: pointer;
+}
+.or {
+  font-size: 30px;
+  margin-left: 50%;
+}
+.uploadCandidateFileDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 320px;
+}
+.fileuploadButton {
+  width: 250px;
+  height: 40px;
+  font-size: 20px;
+  background-color: black;
+  color: white;
+}
+.clearAllButton {
+  width: 100px;
+  height: 30px;
+  background-color: black;
+  color: white;
+}
+.uploadCandidateInnerDiv {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.createTestButton {
+  width: 150px;
+  height: 50px;
+  font-size: 22px;
+  background-color: rgb(15, 82, 186);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin-left: 75%;
+  border-radius: 15px;
+  color: white;
+}
+.createTestButton:active {
+  box-shadow: 0 1px #666;
+  transform: translateY(2px);
+}
+.createTestButton:hover {
+  background-color: rgb(0, 150, 255);
 }
